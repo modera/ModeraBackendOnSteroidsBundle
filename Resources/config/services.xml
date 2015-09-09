@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <services>
+        <service id="modera_backend_on_steroids.example" class="Modera\BackendOnSteroidsBundle\Example">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+
+    <services>
+        <service id="modera_backend_on_steroids.contributions.client_di_service_definitions_provider"
+                 class="Modera\BackendOnSteroidsBundle\Contributions\ClientDiServiceDefinitionsProvider">
+
+            <argument type="service" id="service_container" />
+
+            <tag name="modera_mjr_integration.csdi.service_definitions_provider" />
+        </service>
+
+        <service id="modera_backend_on_steroids.contributions.class_loader_mappings_provider"
+                 class="Modera\BackendOnSteroidsBundle\Contributions\ClassLoaderMappingsProvider">
+
+            <tag name="modera_mjr_integration.class_loader_mappings_provider" />
+        </service>
+
+        <!--
+        Service "modera_backend_on_steroids.compiling.compiler_classes_paths_provider" is defined dynamically in
+        \Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension
+        -->
+    </services>
+</container>

@@ -1,0 +1,16 @@
+framework:
+    secret:          Hell yeah!
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    csrf_protection: true
+    session:         ~
+    templating:
+        engines: ['twig']
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+modera_backend_on_steroids:
+    compiler:
+        workspace_dir: .mega-steroids

@@ -1,0 +1,105 @@
+<?php
+
+namespace Modera\BackendOnSteroidsBundle\Command;
+
+use Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
+
+/**
+ * @author Sergei Lissovski <sergei.lissovski@gmail.com>
+ */
+class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
+{
+    // override
+    protected function configure()
+    {
+        $this
+            ->setName('modera:backend-on-steroids:copy-classes-to-workspace')
+            ->setDescription('Copies contributed ExtJs classes to workspace\'s directory so you can later compile them')
+            ->addOption('track-progress', null, null, 'If provided then you will see where from and to javascript files are copied.')
+        ;
+    }
+
+    // override
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $trackProgress = $input->getOption('track-progress');
+
+        $config = $this->getContainer()->getParameter(ModeraBackendOnSteroidsBundle::CONFIG_KEY)['compiler'];
+
+        $filesystem = $this->getContainer()->get('filesystem');
+        $provider = $this->getContainer()->get('modera_backend_on_steroids.extjs_classes_provider');
+        $finder = new Finder();
+
+        $hostDir = implode(DIRECTORY_SEPARATOR, [
+            getcwd(), $config['workspace_dir'], 'packages', $config['package_name'], 'src'
+        ]);
+
+        $skippedFiles = [];
+        $copiedFiles = [];
+
+        foreach ($provider->getItems() as $jsPath) {
+            if ($filesystem->exists($jsPath)) {
+                foreach ($finder->in($jsPath)->name('*.js') as $filename=>$file) {
+                    /* @var SplFileInfo $file */
+
+                    $contents = file_get_contents($filename);
+
+                    $regex = '/Ext\.define\s*\(\s*["\']{1}(.*)["\']\s*,/';
+
+                    if (preg_match($regex, $contents, $matches)) {
+                        $className = $matches[1];
+
+                        $namespace = explode('.', $className);
+                        array_pop($namespace);
+
+                        $namespaceToPath = implode(DIRECTORY_SEPARATOR, $namespace);
+
+                        $targetDir = $hostDir . DIRECTORY_SEPARATOR . $namespaceToPath;
+
+                        if (!$filesystem->exists($targetDir)) {
+                            $filesystem->mkdir($targetDir);
+                        }
+
+                        $newFilepath = $targetDir . DIRECTORY_SEPARATOR . $file->getFilename();
+
+                        $copiedFiles[] = array(
+                            'source' => $filename,
+                            'target' => $newFilepath
+                        );
+
+                        if ($trackProgress) {
+                            $output->writeln(' ' . $filename);
+                            $output->writeln(' copied to');
+                            $output->writeln(' ' . $newFilepath);
+                            $output->writeln('');
+                        }
+
+                        $filesystem->copy($filename, $newFilepath);
+                    } else {
+                        $skippedFiles[] = $filename;
+                    }
+                }
+
+            }
+        }
+
+        $output->writeln(sprintf(
+            ' <info>Done! In total %d files were copied to "%s" directory.</info>', count($copiedFiles), $hostDir
+        ));
+        $output->writeln(' <info>Now you case run this to have them compiled for you (on host machine, outside of docker container):</info>');
+        $output->writeln(' ./steroids-compile.sh');
+        if ($skippedFiles) {
+            $output->writeln(
+                sprintf(' <comment>%d files were skipped because they seem to contain no Extjs class: </comment>', count($skippedFiles))
+            );
+            foreach ($skippedFiles as $filename) {
+                $output->writeln(' - ' . $filename);
+            }
+        }
+    }
+}

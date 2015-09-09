@@ -1,0 +1,7 @@
+rm {{ workspace_dir }} -rf
+rm steroids-compile.sh
+rm steroids-setup.sh
+
+( sleep 2; rm steroids-cleanup.sh ) &
+
+echo "Done!"

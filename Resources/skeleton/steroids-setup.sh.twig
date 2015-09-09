@@ -1,0 +1,35 @@
+initial_dir=`pwd`
+workspace_dir={{ workspace_dir }}
+docker_sencha_image=cravler/sencha-cmd:4
+package_name={{ package_name }}
+
+###
+
+mkdir -p {{ output_file_dir }}
+
+echo
+echo "*** CLONING GIT REPOSITORIES ***"
+git clone ssh://git@stash.dev.modera.org:7999/mf/extjs-workspace.git $workspace_dir
+cd $workspace_dir
+./update-packages.sh --init
+
+echo
+echo "*** GENERATING A PACKAGE ***"
+docker run -it --rm -v `pwd`:/var/www $docker_sencha_image sencha generate package $package_name
+sudo chown `whoami` . -R
+
+echo
+echo "*** UPDATING CONFIG FILES ***"
+printf "\n# added by steroids:\npackage.framework=ext" >> packages/bundles/.sencha/package/sencha.cfg
+printf "\n# added by steroids (prevents using yui, which may throw compilation errors):\nbuild.compile.js.compress=" >> packages/bundles/.sencha/package/build.properties
+
+cd packages/$package_name
+find . -type f -print0 | xargs -0 sed -i 's/\"requires\": \[/"requires": \[\n        "MJR"\n    /g'
+cd ../../
+
+echo
+echo "**** DOING A PACKAGE BUILD TO VERIFY INSTALLATION ***"
+docker run -it --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
+sudo chown `whoami` . -R
+
+# docker run -it --rm -v `pwd`:/var/www -w /var/www/packages/bundles cravler/sencha-cmd:4 sencha package build

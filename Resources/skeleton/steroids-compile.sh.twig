@@ -1,0 +1,16 @@
+initial_dir=`pwd`
+workspace_dir={{ workspace_dir }}
+docker_sencha_image=cravler/sencha-cmd:4
+package_name={{ package_name }}
+result_file={{ output_file }}
+
+###
+
+cd $workspace_dir
+docker run -it --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
+sudo chown `whoami` . -R
+cp packages/$package_name/build/$package_name.js $initial_dir/$result_file
+
+echo
+echo "*** DONE ***"
+echo "Compiled file has been copied to $initial_dir/$result_file"
