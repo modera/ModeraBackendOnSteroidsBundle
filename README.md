@@ -3,7 +3,7 @@
 Bundle makes it easier to optimize backend's loading speed for up to 50%, it does it several ways:
 
  * Provides console commands which can generate shell scripts which can be used to compile all bundle's
- extjs classes together using Sencha Cmd
+ extjs classes together using Sencha Cmd. **NB! Generated scripts rely on Docker!**
 
 ## Installation
 
