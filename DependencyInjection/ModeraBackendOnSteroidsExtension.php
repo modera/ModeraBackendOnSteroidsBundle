@@ -2,6 +2,7 @@
 
 namespace Modera\BackendOnSteroidsBundle\DependencyInjection;
 
+use Modera\BackendOnSteroidsBundle\Contributions\JsResourcesProvider;
 use Modera\BackendOnSteroidsBundle\Contributions\SemanticConfigCompilerPathsProvider;
 use Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -29,6 +30,17 @@ class ModeraBackendOnSteroidsExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter(self::CONFIG_KEY, $config);
+
+        if ($config['inject_scripts']) {
+            $jsResourcesProvider = new Definition(JsResourcesProvider::clazz());
+            $jsResourcesProvider->addArgument(new Reference('service_container'));
+            $jsResourcesProvider->addTag('modera_mjr_integration.js_resources_provider');
+
+            $container->setDefinition(
+                'modera_backend_on_steroids.contributions.js_resources_provider',
+                $jsResourcesProvider
+            );
+        }
 
         $semanticPathsProvider = new Definition(SemanticConfigCompilerPathsProvider::clazz());
         $semanticPathsProvider->addArgument($config);

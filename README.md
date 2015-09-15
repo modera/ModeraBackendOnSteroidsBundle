@@ -1,11 +1,13 @@
 # ModeraBackendOnSteroidsBundle [![Build Status](https://travis-ci.org/modera/ModeraBackendOnSteroidsBundle.svg?branch=1.0)](https://travis-ci.org/modera/ModeraBackendOnSteroidsBundle)
 
-Bundle makes it easier to optimize backend's loading speed for up to 50%, it does it several ways:
+Bundle makes it easier to optimize backend's loading speed for up to 50%, it does it in several ways:
 
  * Provides console commands which can generate shell scripts which can be used to compile all bundle's
- extjs classes together using Sencha Cmd. **NB! Generated scripts rely on Docker!**
+ extjs classes together using Sencha Cmd. Using these scripts you will use Sencha Cmd without
+  the need to learn how to use and configure it, it will be done for you behind the scene. **NB! Generated scripts rely on Docker!**
  * Ships a special resources-loader which makes it possible to automatically detect and include
- MJR.js and a javascript file which is compiled from bundles' javascript extjs-classes.
+ MJR.js and a javascript file which is compiled from bundles' javascript extjs-classes (with default configuration
+ it is named `bundles.js`).
  * Using a semantic configuration makes it possible to mark certain bundles (using regex-like syntax) and their
  javascript files as non-blocking resources. This is especially useful when there're bundles whose assets
  are not designated as non-blocking but in fact they are and you want to override this behaviour, make them load

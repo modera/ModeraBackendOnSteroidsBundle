@@ -57,6 +57,12 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                // By default if the bundle detects that both MJR.js and bundle.js files exist they will be included
+                // to backend page with <script> tags, if you don't need to have such behaviour (in dev mode, for example),
+                // then set this flag to false
+                ->scalarNode('inject_scripts')
+                    ->defaultValue(true)
+                ->end()
                 // This option will be removed in 3.0:
                 // Allows to mark blocking assets as non-blocking, you may need to use this option when
                 // you have lots of bundles which haven't designated their assets as non-blocking but in fact

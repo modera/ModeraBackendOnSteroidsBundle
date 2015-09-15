@@ -78,4 +78,12 @@ class JsResourcesProvider implements ContributorInterface
 
         return [];
     }
+
+    /**
+     * @return string
+     */
+    static public function clazz()
+    {
+        return get_called_class();
+    }
 }
