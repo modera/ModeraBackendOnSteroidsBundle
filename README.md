@@ -15,7 +15,7 @@ Bundle makes it easier to optimize backend's loading speed for up to 50%, it doe
 
 Add this dependency to your composer.json:
 
-    "modera/backend-on-steroids-bundle": "dev-master"
+    "modera/backend-on-steroids-bundle": "~1.0"
 
 Update your AppKernel class and add ModeraBackendOnSteroidsBundle declaration there:
 
