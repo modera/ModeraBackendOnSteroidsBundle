@@ -39,10 +39,14 @@ executed it will generated four shell scripts for you:
 See `Modera\BackendOnSteroidsBundle\DependencyInjection\Configuration` for a full list of available configuration
 properties.
 
+In order to make your extjs classes visible to `modera:backend-on-steroids:copy-classes-to-workspace`, you need to contribute
+to `modera_backend_on_steroids.extjs_classes_paths` extension-point *or* if you are not going to distribute your bundles
+you can use `modera_backend_on_steroids/compiler/path_patterns` configuration property.
+
 ### Typical workflow
 
-1. $ `modera:backend-on-steroids:copy-classes-to-workspace`
-2. Make generated scripts executable (when `copy-classes-to-workspace` is executed required shell command is printed that you can use)
+1. $ `modera:backend-on-steroids:generate-scripts`
+2. Make generated scripts executable (when `modera:backend-on-steroids:generate-scripts` is executed required shell command is printed that you can use)
 3. $ `./steroids-compile-bundles.sh`
 4. $ `./steroids-compile-mjr.sh`
 
