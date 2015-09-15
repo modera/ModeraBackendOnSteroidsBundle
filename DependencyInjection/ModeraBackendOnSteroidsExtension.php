@@ -18,6 +18,8 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class ModeraBackendOnSteroidsExtension extends Extension
 {
+    const CONFIG_KEY = 'modera_backend_on_steroids.config';
+
     /**
      * {@inheritdoc}
      */
@@ -26,12 +28,11 @@ class ModeraBackendOnSteroidsExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter(ModeraBackendOnSteroidsBundle::CONFIG_KEY, $config);
+        $container->setParameter(self::CONFIG_KEY, $config);
 
         $semanticPathsProvider = new Definition(SemanticConfigCompilerPathsProvider::clazz());
         $semanticPathsProvider->addArgument($config);
-        $semanticPathsProvider->addArgument(new Reference('kernel'));
-        $semanticPathsProvider->addTag('modera_backend_on_steroids.extjs_classes_provider');
+        $semanticPathsProvider->addTag('modera_backend_on_steroids.extjs_classes_paths_provider');
 
         $container->setDefinition('modera_backend_on_steroids.semantic_config_classes_paths_provider', $semanticPathsProvider);
 

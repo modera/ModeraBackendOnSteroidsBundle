@@ -4,6 +4,12 @@ Bundle makes it easier to optimize backend's loading speed for up to 50%, it doe
 
  * Provides console commands which can generate shell scripts which can be used to compile all bundle's
  extjs classes together using Sencha Cmd. **NB! Generated scripts rely on Docker!**
+ * Ships a special resources-loader which makes it possible to automatically detect and include
+ MJR.js and a javascript file which is compiled from bundles' javascript extjs-classes.
+ * Using a semantic configuration makes it possible to mark certain bundles (using regex-like syntax) and their
+ javascript files as non-blocking resources. This is especially useful when there're bundles whose assets
+ are not designated as non-blocking but in fact they are and you want to override this behaviour, make them load
+ asynchronously.
 
 ## Installation
 
@@ -18,18 +24,31 @@ Update your AppKernel class and add ModeraBackendOnSteroidsBundle declaration th
 ## Documentation
 
 Once you have installed the bundle please use `modera:backend-on-steroids:generate-scripts` command, once
-executed it will generated three shell scripts for you:
+executed it will generated four shell scripts for you:
 
  * `steroids-setup.sh`  - This script will prepare an extjs workspace for you that will be used to compile your
  assets using Sencha Cmd
- * `steroids-compile.sh` - Once you have steroids set up and your extjs classes copied (use `modera:backend-on-steroids:copy-classes-to-workspace`
+ * `steroids-compile-bundles.sh` - Once you have steroids set up and your extjs classes copied (use `modera:backend-on-steroids:copy-classes-to-workspace`
  for that) you can invoke this command and have all your installation extjs classes will be compiled together, the result, if
  no configuration changed, will copied to `web/backend-on-steroids/bundles.js` file.
+ * `steroids-compile-mjr.sh` - compiles MJR for you and places it, if no semantic configuration is modified, to
+ `web/backend-on-steroids/MJR.js`
  * `steroids-cleanup.sh`  - If you don't anymore need extjs-workspace then you can use this script and it will delete
  all developers files that were created to setup extjs-workspace (your compiled extjs classes won't be touched)
 
 See `Modera\BackendOnSteroidsBundle\DependencyInjection\Configuration` for a full list of available configuration
 properties.
+
+### Typical workflow
+
+1. $ `modera:backend-on-steroids:copy-classes-to-workspace`
+2. Make generated scripts executable (when `copy-classes-to-workspace` is executed required shell command is printed that you can use)
+3. $ `./steroids-compile-bundles.sh`
+4. $ `./steroids-compile-mjr.sh`
+
+Once this steps are completed, given that you haven't changed this bundle's semantic configuration
+`compiler/path_patterns` property), when you refresh backend you should see that MJR.js and bundles.js are
+automatically included using "script" tags.
 
 ## Licensing
 

@@ -13,7 +13,9 @@ class AppKernel extends Kernel
 
             new Modera\FoundationBundle\ModeraFoundationBundle(),
             new Sli\ExpanderBundle\SliExpanderBundle(),
-            new Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle()
+            new Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle(),
+
+            new Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\ModeraBackendDummyBundle()
         );
     }
 

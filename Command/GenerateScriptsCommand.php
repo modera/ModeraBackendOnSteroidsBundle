@@ -2,8 +2,8 @@
 
 namespace Modera\BackendOnSteroidsBundle\Command;
 
+use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
 use Modera\BackendOnSteroidsBundle\Generators\ShellScriptsGenerator;
-use Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle;
 use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -27,7 +27,7 @@ class GenerateScriptsCommand extends GeneratorCommand
     // override
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $semanticConfig = $this->getContainer()->getParameter(ModeraBackendOnSteroidsBundle::CONFIG_KEY);
+        $semanticConfig = $this->getContainer()->getParameter(ModeraBackendOnSteroidsExtension::CONFIG_KEY);
         $compilerConfig = $semanticConfig['compiler'];
 
         $compilerConfig = array_merge($compilerConfig, array(

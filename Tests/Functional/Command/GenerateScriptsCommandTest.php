@@ -21,7 +21,7 @@ class GenerateScriptsCommandTest extends FunctionalTestCase
     {
         $result= [];
 
-        foreach (['cleanup', 'compile', 'setup'] as $name) {
+        foreach (['cleanup', 'compile-mjr', 'compile-bundles', 'setup'] as $name) {
             $result[] = self::$scriptsDir . 'steroids-' . $name . '.sh';
         }
 

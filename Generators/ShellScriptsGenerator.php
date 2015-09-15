@@ -15,14 +15,14 @@ class ShellScriptsGenerator extends Generator
         $cwd = getcwd();
 
         $scripts = [
-            'steroids-setup', 'steroids-cleanup', 'steroids-compile'
+            'setup', 'cleanup', 'compile-bundles', 'compile-mjr'
         ];
         $generatedScripts = [];
 
         foreach ($scripts as $token) {
-            $filename = $cwd . DIRECTORY_SEPARATOR . $token . '.sh';
+            $filename = $cwd . DIRECTORY_SEPARATOR  . 'steroids-' . $token . '.sh';
 
-            $this->renderFile("$token.sh.twig", $filename, $compilerConfig);
+            $this->renderFile("steroids-$token.sh.twig", $filename, $compilerConfig);
 
             if (file_exists($filename)) {
                 $generatedScripts[] = $filename;

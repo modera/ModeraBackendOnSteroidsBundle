@@ -9,15 +9,6 @@ use Modera\BackendOnSteroidsBundle\Contributions\SemanticConfigCompilerPathsProv
  */
 class SemanticConfigCompilerPathsProviderTest extends \PHPUnit_Framework_TestCase
 {
-    private function createBundle($name, $path)
-    {
-        $bundle = \Phake::mock('Symfony\Component\HttpKernel\Bundle\BundleInterface');
-        \Phake::when($bundle)->getName()->thenReturn($name);
-        \Phake::when($bundle)->getPath()->thenReturn($path);
-
-        return $bundle;
-    }
-
     public function testGetPaths()
     {
         $semanticConfig = array(
@@ -29,19 +20,10 @@ class SemanticConfigCompilerPathsProviderTest extends \PHPUnit_Framework_TestCas
             )
         );
 
-        $kernel = \Phake::mock('Symfony\Component\HttpKernel\KernelInterface');
-        \Phake::when($kernel)->getBundles()->thenReturn([
-            $this->createBundle('ModeraBackendFooBundle', '/var/www/myapp/vendor/modera/backend-foo'),
-            $this->createBundle('ModeraBackenFooBundle', '/var/www/myapp/vendor/modera/backen-foo'), // nein
-            $this->createBundle('PartnerBackendFooBundle', '/var/www/myapp/vendor/partner/backend-foo')
-        ]);
+        $provider = new SemanticConfigCompilerPathsProvider($semanticConfig);
 
-        $resolver = new SemanticConfigCompilerPathsProvider($semanticConfig, $kernel);
+        $result = $provider->getItems();
 
-        $paths = $resolver->getItems();
-
-        $this->assertEquals(2, count($paths));
-        $this->assertEquals('/var/www/myapp/vendor/modera/backend-foo/Resources/public/js', $paths[0]);
-        $this->assertEquals('/var/www/myapp/vendor/partner/backend-foo/Resources/public/js/runtime', $paths[1]);
+        $this->assertEquals($semanticConfig['compiler']['path_patterns'], $result);
     }
 }

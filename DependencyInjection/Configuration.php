@@ -39,17 +39,36 @@ class Configuration implements ConfigurationInterface
                             ->defaultValue('bundles')
                             ->cannotBeEmpty()
                         ->end()
-                        // Where to move a fat javascript file created by Sencha Cmd (usually to make it web accessible)
+                        // Where to move a fat javascript file created by Sencha Cmd (usually to make it web accessible),
+                        // this file will be created when you use "steroids-compile-bundles.sh"
                         ->scalarNode('output_file')
                             ->defaultValue('web/backend-on-steroids/bundles.js')
+                        ->end()
+                        // Once MJR's classes are compiled together using "steroids-compile-mjr.sh" where resulting
+                        // file should be moved to
+                        ->scalarNode('mjr_output_file')
+                            ->defaultValue('web/backend-on-steroids/MJR.js')
                         ->end()
                         // List of patterns where modera:backend-on-steroids:copy-classes-to-workspace command
                         // will be looking for ExtJs classes
                         ->arrayNode('path_patterns')
                             ->defaultValue(['@ModeraBackend.*Bundle/Resources/public/js'])
-                            ->prototype('scalar')
+                            ->prototype('scalar')->end()
                         ->end()
                     ->end()
+                ->end()
+                // This option will be removed in 3.0:
+                // Allows to mark blocking assets as non-blocking, you may need to use this option when
+                // you have lots of bundles which haven't designated their assets as non-blocking but in fact
+                // their are. For example, by writing this configuration all assets which originate from
+                // /bundles/moderabackend* directories will be marked as non-blocking (excerpt from app/config/config.yml):
+                //
+                // modera_backend_on_steroids:
+                //     non_blocking_assets_patterns:
+                //         - ^/bundles/moderabackend.*
+                ->arrayNode('non_blocking_assets_patterns')
+                    ->defaultValue([])
+                    ->prototype('scalar')->end()
                 ->end()
             ->end()
         ;

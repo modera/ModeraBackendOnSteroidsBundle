@@ -33,9 +33,6 @@ class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
         static::cleanUp();
     }
 
-    /**
-     * Template method.
-     */
     static public function doSetUpBeforeClass()
     {
         static::cleanUp();
@@ -59,14 +56,17 @@ class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
 
         $files = [
             ['.mega-steroids'],
-            ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backend', 'backendonsteroids', 'AsyncLoader.js'],
-            ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backend', 'backendonsteroids', 'runtime', 'ResourcesLoaderPlugin.js'],
+            ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backenddummy', 'runtime', 'MegaPlugin.js'],
+            ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backenddummy', 'runtime', 'panel', 'MegaPanel.js']
         ];
 
         foreach ($files as $file) {
             $filepath = implode(DIRECTORY_SEPARATOR, array_merge([getcwd()], $file));
 
+            $filesize = filesize($filepath);
+
             $this->assertTrue(file_exists($filepath), sprintf('File %s is not found.', $filepath));
+            $this->assertTrue(false !== $filesize && 0 !== $filesize);
         }
     }
 }
