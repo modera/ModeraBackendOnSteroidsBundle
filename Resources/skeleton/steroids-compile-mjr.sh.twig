@@ -1,4 +1,5 @@
 initial_dir=`pwd`
+workspace_dir={{ workspace_dir }}
 mjr_output_file={{ mjr_output_file }}
 
 ###
@@ -8,9 +9,10 @@ if ! which docker > /dev/null; then
     exit 1
 fi
 
-cd ./.steroids/
+cd $workspace_dir
 ./build.sh
 
+sudo chown `whoami` . -R
 cp packages/modera-runtime/build/MJR.js $initial_dir/$mjr_output_file
 
 echo "*** DONE! ***"
