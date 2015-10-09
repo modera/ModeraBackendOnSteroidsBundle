@@ -53,7 +53,7 @@ class PathExpressionResolver
             foreach ($this->kernel->getBundles() as $bundle) {
                 /* @var BundleInterface $bundle */
 
-                $regex = '|^' . $bundleName . '$|';
+                $regex = '|^'.$bundleName.'$|';
 
                 if (preg_match($regex, $bundle->getName())) {
                     $matchedBundles[] = $bundle;

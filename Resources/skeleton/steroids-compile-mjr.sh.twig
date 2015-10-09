@@ -3,6 +3,11 @@ mjr_output_file={{ mjr_output_file }}
 
 ###
 
+if ! which docker > /dev/null; then
+    echo "Hello, it seems you are running from a Docker container already, but you need to run me from host machine (where Docker is installed). Exiting ..."
+    exit 1
+fi
+
 cd ./.steroids/
 ./build.sh
 

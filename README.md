@@ -56,6 +56,38 @@ Once this steps are completed, given that you haven't changed this bundle's sema
 `compiler/path_patterns` property), when you refresh backend you should see that MJR.js and bundles.js are
 automatically included using "script" tags.
 
+### Troubleshooting
+
+#### Sencha Cmd not finding classes
+
+If, while executing `./steroids-compile-bundles.sh` you are getting BUILD FAILED similar to this one:
+
+```
+[ERR] BUILD FAILED
+[ERR] com.sencha.exceptions.ExBuild: Failed to find any files for /var/www/packages/bundles/src/MyCompany/mypackage/CustomerHistory.js::ClassRequire::MyCompany.mypackage.CustomerHistoryActivity
+[ERR]
+[ERR] Total time: 21 seconds
+[ERR] The following error occurred while executing this line:
+/var/www/packages/bundles/.sencha/package/build-impl.xml:137: The following error occurred while executing this line:
+/var/www/packages/bundles/.sencha/package/js-impl.xml:32: com.sencha.exceptions.ExBuild: Failed to find any files for
+/var/www/packages/bundles/src/MyCompany/mypackage/CustomerHistory.js::ClassRequire::MyCompany.mypackage.CustomerHistoryActivity
+```
+
+It means that your file, which in this case is located at `/var/www/packages/bundles/src/MyCompany/mypackage/CustomerHistory.js`
+is referencing a class `MyCompany.mypackage.CustomerHistoryActivity` which Sencha Cmd compiler cannot find. This usually
+means one of two things:
+
+- `modera:backend-on-steroids:copy-classes-to-workspace` command didn't find a directory where `MyCompany.mypackage.CustomerHistoryActivity` is
+located and therefore could not properly prepare steroids' workspace. To solve this problem you need to find where CustomerHistoryActivity.js
+file is located and update `modera_backend_on_steroids/path_patterns` configuration property. For more details
+please see `\Modera\BackendOnSteroidsBundle\DependencyInjection\Configuration`. Once configuration property is updated,
+don't forget to run `modera:backend-on-steroids:copy-classes-to-workspace` again. If you checked your project and still
+couldn't find `CustomerHistoryActivity.js` file anywhere, chances are that you are dealing with the second case:
+- `CustomerHistoryActivity` class has been deleted, but developer simply forgot to update `CustomerHistory` class to remove
+`CustomerHistoryActivity`  from its dependencies. In this case what you need to do is to open `CustomerHistory.js` file,
+locate its `requires` or similar dependency declaration block and remove `CustomerHistoryActivity` from there. Once
+its done you can run `modera:backend-on-steroids:copy-classes-to-workspace` and then `./steroids-compile-bundles.sh`.
+
 ## Licensing
 
 This bundle is under the MIT license. See the complete license in the bundle:

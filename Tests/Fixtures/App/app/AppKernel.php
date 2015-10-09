@@ -15,13 +15,13 @@ class AppKernel extends Kernel
             new Sli\ExpanderBundle\SliExpanderBundle(),
             new Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle(),
 
-            new Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\ModeraBackendDummyBundle()
+            new Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\ModeraBackendDummyBundle(),
         );
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__ . '/config/config.yml');
+        $loader->load(__DIR__.'/config/config.yml');
     }
 
     /**
@@ -29,7 +29,7 @@ class AppKernel extends Kernel
      */
     public function getCacheDir()
     {
-        return sys_get_temp_dir() . '/ModeraBackendOnSteroidsBundle/cache';
+        return sys_get_temp_dir().'/ModeraBackendOnSteroidsBundle/cache';
     }
 
     /**
@@ -37,6 +37,6 @@ class AppKernel extends Kernel
      */
     public function getLogDir()
     {
-        return sys_get_temp_dir() . '/ModeraBackendOnSteroidsBundle/logs';
+        return sys_get_temp_dir().'/ModeraBackendOnSteroidsBundle/logs';
     }
 }

@@ -17,8 +17,8 @@ class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit_Framework_TestCase
 
         $config = array(
             array(
-                'inject_scripts' => $injectScripts
-            )
+                'inject_scripts' => $injectScripts,
+            ),
         );
 
         $containerBuilder = \Phake::mock('Symfony\Component\DependencyInjection\ContainerBuilder');
@@ -27,7 +27,7 @@ class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit_Framework_TestCase
 
         $params = array(
             'names' => [],
-            'definitions' => []
+            'definitions' => [],
         );
 
         \Phake::verify($containerBuilder, \Phake::atLeast(1))->setDefinition(
@@ -63,6 +63,6 @@ class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit_Framework_TestCase
         /* @var \Symfony\Component\DependencyInjection\Reference $firstArg */
         $firstArg = $args[0];
         $this->assertInstanceOf('Symfony\Component\DependencyInjection\Reference', $firstArg);
-        $this->assertEquals('service_container', (string)$firstArg);
+        $this->assertEquals('service_container', (string) $firstArg);
     }
 }

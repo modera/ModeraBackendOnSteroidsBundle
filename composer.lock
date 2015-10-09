@@ -636,20 +636,20 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.7.4",
+            "version": "v2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "1fdf23fe28876844b887b0e1935c9adda43ee645"
+                "reference": "619528a274647cffc1792063c3ea04c4fa8266a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/1fdf23fe28876844b887b0e1935c9adda43ee645",
-                "reference": "1fdf23fe28876844b887b0e1935c9adda43ee645",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/619528a274647cffc1792063c3ea04c4fa8266a0",
+                "reference": "619528a274647cffc1792063c3ea04c4fa8266a0",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.3",
+                "doctrine/common": "~2.4",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
                 "twig/twig": "~1.20|~2.0"
@@ -702,9 +702,9 @@
             },
             "require-dev": {
                 "doctrine/data-fixtures": "1.0.*",
-                "doctrine/dbal": "~2.2",
+                "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.2",
-                "doctrine/orm": "~2.2,>=2.2.3",
+                "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2",
                 "ircmaxell/password-compat": "~1.0",
                 "monolog/monolog": "~1.11",
@@ -754,20 +754,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-09-08 14:26:39"
+            "time": "2015-09-25 11:16:52"
         },
         {
             "name": "twig/twig",
-            "version": "v1.22.1",
+            "version": "v1.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "b7fc2469fa009897871fb95b68237286fc54a5ad"
+                "reference": "79249fc8c9ff62e41e217e0c630e2e00bcadda6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/b7fc2469fa009897871fb95b68237286fc54a5ad",
-                "reference": "b7fc2469fa009897871fb95b68237286fc54a5ad",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/79249fc8c9ff62e41e217e0c630e2e00bcadda6a",
+                "reference": "79249fc8c9ff62e41e217e0c630e2e00bcadda6a",
                 "shasum": ""
             },
             "require": {
@@ -815,23 +815,23 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-09-15 06:50:16"
+            "time": "2015-09-22 13:59:32"
         }
     ],
     "packages-dev": [
         {
             "name": "modera/foundation-bundle",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "target-dir": "Modera/FoundationBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/modera/ModeraFoundationBundle.git",
-                "reference": "d041b785bdb7485f1de1929580fb526b3642376d"
+                "reference": "eebf69f856388b055b9aea8cad2ad1c0374876c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/modera/ModeraFoundationBundle/zipball/d041b785bdb7485f1de1929580fb526b3642376d",
-                "reference": "d041b785bdb7485f1de1929580fb526b3642376d",
+                "url": "https://api.github.com/repos/modera/ModeraFoundationBundle/zipball/eebf69f856388b055b9aea8cad2ad1c0374876c7",
+                "reference": "eebf69f856388b055b9aea8cad2ad1c0374876c7",
                 "shasum": ""
             },
             "require": {
@@ -863,20 +863,20 @@
                     "homepage": "http://sergei.lissovski.org/"
                 }
             ],
-            "time": "2015-02-09 10:57:23"
+            "time": "2015-10-05 06:51:09"
         },
         {
             "name": "phake/phake",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mlively/Phake.git",
-                "reference": "20d76de0ec09f219d548752847835c256526d22d"
+                "reference": "260553214c4b1a8796bcf28c7b8db24a2b15840b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mlively/Phake/zipball/20d76de0ec09f219d548752847835c256526d22d",
-                "reference": "20d76de0ec09f219d548752847835c256526d22d",
+                "url": "https://api.github.com/repos/mlively/Phake/zipball/260553214c4b1a8796bcf28c7b8db24a2b15840b",
+                "reference": "260553214c4b1a8796bcf28c7b8db24a2b15840b",
                 "shasum": ""
             },
             "require": {
@@ -884,6 +884,7 @@
                 "sebastian/comparator": "~1.1"
             },
             "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
                 "doctrine/common": "2.3.*",
                 "ext-soap": "*",
                 "hamcrest/hamcrest-php": "1.1.*",
@@ -894,6 +895,11 @@
                 "hamcrest/hamcrest-php": "Use Hamcrest matchers."
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.0-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Phake": "src/"
@@ -915,7 +921,7 @@
                 "mock",
                 "testing"
             ],
-            "time": "2015-05-09 13:58:15"
+            "time": "2015-09-03 13:05:57"
         },
         {
             "name": "phpunit/php-code-coverage",

@@ -7,7 +7,6 @@ use Modera\BackendOnSteroidsBundle\Generators\ShellScriptsGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
@@ -31,7 +30,7 @@ class GenerateScriptsCommand extends GeneratorCommand
         $compilerConfig = $semanticConfig['compiler'];
 
         $compilerConfig = array_merge($compilerConfig, array(
-            'output_file_dir' => substr($compilerConfig['output_file'], 0, strrpos($compilerConfig['output_file'], '/'))
+            'output_file_dir' => substr($compilerConfig['output_file'], 0, strrpos($compilerConfig['output_file'], '/')),
         ));
 
         /* @var ShellScriptsGenerator $generator */
@@ -41,15 +40,15 @@ class GenerateScriptsCommand extends GeneratorCommand
 
         $output->writeln('Following scripts have been generated:');
         foreach ($generatedScripts as $filename) {
-            $output->writeln(' -' . $filename);
+            $output->writeln(' -'.$filename);
         }
 
         $filenames = [];
         foreach ($generatedScripts as $path) {
-            $filenames[] = substr($path, strrpos($path, '/')+1);
+            $filenames[] = substr($path, strrpos($path, '/') + 1);
         }
 
-        $output->writeln("<info>Please use this following command to make scripts executable (execute from host machine): </info>");
+        $output->writeln('<info>Please use this following command to make scripts executable (execute from host machine): </info>');
         $output->writeln(
             sprintf('sudo chown `whoami` %s && chmod +x %s', implode(' ', $filenames), implode(' ', $filenames))
         );
@@ -59,7 +58,7 @@ class GenerateScriptsCommand extends GeneratorCommand
     protected function getSkeletonDirs(BundleInterface $bundle = null)
     {
         return [
-            __DIR__ . '/../Resources/skeleton'
+            __DIR__.'/../Resources/skeleton',
         ];
     }
 

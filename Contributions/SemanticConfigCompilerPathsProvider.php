@@ -2,10 +2,7 @@
 
 namespace Modera\BackendOnSteroidsBundle\Contributions;
 
-use Modera\BackendOnSteroidsBundle\AssetsDiscovery\PathExpressionResolver;
 use Sli\ExpanderBundle\Ext\ContributorInterface;
-use Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
  * This implementations uses semantic config's "compiler/path_patterns" configuration parameter
@@ -38,7 +35,7 @@ class SemanticConfigCompilerPathsProvider implements ContributorInterface
         return $this->semanticConfig['compiler']['path_patterns'];
     }
 
-    static public function clazz()
+    public static function clazz()
     {
         return get_called_class();
     }

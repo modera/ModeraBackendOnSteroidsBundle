@@ -69,5 +69,4 @@ class NonBlockingAssetsProvider extends AssetsProvider
             return array_merge($nonBlockingByPatternMatching, parent::filterRawAssetsByType($type, $rawAssets));
         }
     }
-
 }

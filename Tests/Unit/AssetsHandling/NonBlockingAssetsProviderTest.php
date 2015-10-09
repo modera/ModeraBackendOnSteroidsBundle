@@ -43,13 +43,13 @@ class NonBlockingAssetsProviderTest extends \PHPUnit_Framework_TestCase
     {
         // assets that match this pattern will also be returned as non-blocking
         $patterns = [
-            '^/bundles/moderabackend.*'
+            '^/bundles/moderabackend.*',
         ];
 
         $cssAssets = [
             '/bundles/moderabackendtools/originally-i-was-blocking.css',
             '*non-blocking-basterd.css',
-            '/bundles/foo/blocking.css'
+            '/bundles/foo/blocking.css',
         ];
 
         $provider = $this->createIUT($patterns, $cssAssets);
@@ -70,13 +70,13 @@ class NonBlockingAssetsProviderTest extends \PHPUnit_Framework_TestCase
     {
         // assets that match this pattern will also be returned as non-blocking
         $patterns = [
-            '^/bundles/moderabackend.*'
+            '^/bundles/moderabackend.*',
         ];
 
         $jsAssets = [
             '/bundles/moderabackendtools/originally-i-was-blocking.js',
             '*non-blocking-basterd.js',
-            '/bundles/foo/blocking.js'
+            '/bundles/foo/blocking.js',
         ];
 
         $provider = $this->createIUT($patterns, [], $jsAssets);

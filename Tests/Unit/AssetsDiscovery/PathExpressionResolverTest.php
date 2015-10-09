@@ -1,6 +1,7 @@
 <?php
 
 namespace Modera\BackendOnSteroidsBundle\Tests\Unit\AssetsDiscovery;
+
 use Modera\BackendOnSteroidsBundle\AssetsDiscovery\PathExpressionResolver;
 
 /**
@@ -24,7 +25,7 @@ class PathExpressionResolverTest extends \PHPUnit_Framework_TestCase
         \Phake::when($kernel)->getBundles()->thenReturn([
             $this->createBundle('ModeraBackendFooBundle', '/var/www/myapp/vendor/modera/backend-foo'),
             $this->createBundle('ModeraBackenFooBundle', '/var/www/myapp/vendor/modera/backen-foo'), // nein
-            $this->createBundle('PartnerBackendFooBundle', '/var/www/myapp/vendor/partner/backend-foo')
+            $this->createBundle('PartnerBackendFooBundle', '/var/www/myapp/vendor/partner/backend-foo'),
         ]);
 
         $resolver = new PathExpressionResolver($kernel);

@@ -13,12 +13,12 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
 {
-    static public function cleanUp()
+    public static function cleanUp()
     {
         /* @var Filesystem $filesystem */
         $filesystem = self::$container->get('filesystem');
 
-        $dir = getcwd() . DIRECTORY_SEPARATOR . '.mega-steroids';
+        $dir = getcwd().DIRECTORY_SEPARATOR.'.mega-steroids';
 
         if ($filesystem->exists($dir)) {
             $filesystem->remove($dir);
@@ -26,14 +26,14 @@ class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    static public function doTearDownAfterClass()
+    public static function doTearDownAfterClass()
     {
         static::cleanUp();
     }
 
-    static public function doSetUpBeforeClass()
+    public static function doSetUpBeforeClass()
     {
         static::cleanUp();
     }
@@ -57,7 +57,7 @@ class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
         $files = [
             ['.mega-steroids'],
             ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backenddummy', 'runtime', 'MegaPlugin.js'],
-            ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backenddummy', 'runtime', 'panel', 'MegaPanel.js']
+            ['.mega-steroids', 'packages', 'bundles', 'src', 'Modera', 'backenddummy', 'runtime', 'panel', 'MegaPanel.js'],
         ];
 
         foreach ($files as $file) {

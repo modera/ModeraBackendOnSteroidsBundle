@@ -16,8 +16,8 @@ class SemanticConfigCompilerPathsProviderTest extends \PHPUnit_Framework_TestCas
                 'path_patterns' => array(
                     '@ModeraBackend.*Bundle/Resources/public/js',
                     '@PartnerBackend.*Bundle/Resources/public/js/runtime',
-                )
-            )
+                ),
+            ),
         );
 
         $provider = new SemanticConfigCompilerPathsProvider($semanticConfig);

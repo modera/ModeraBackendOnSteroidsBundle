@@ -6,8 +6,6 @@ use Modera\BackendOnSteroidsBundle\Tests\Fixtures\TestOutput;
 use Modera\FoundationBundle\Testing\FunctionalTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\Console\Output\Output;
 
 /**
  * @author Sergei Lissovski <sergei.lissovski@gmail.com>
@@ -15,20 +13,20 @@ use Symfony\Component\Console\Output\Output;
 class GenerateScriptsCommandTest extends FunctionalTestCase
 {
     // see doSetUpBeforeClass()
-    static private $scriptsDir;
+    private static $scriptsDir;
 
-    static public function getScriptsPaths()
+    public static function getScriptsPaths()
     {
-        $result= [];
+        $result = [];
 
         foreach (['cleanup', 'compile-mjr', 'compile-bundles', 'setup'] as $name) {
-            $result[] = self::$scriptsDir . 'steroids-' . $name . '.sh';
+            $result[] = self::$scriptsDir.'steroids-'.$name.'.sh';
         }
 
         return $result;
     }
 
-    static private function deleteGeneratedScripts()
+    private static function deleteGeneratedScripts()
     {
         foreach (self::getScriptsPaths() as $filepath) {
             if (file_exists($filepath)) {
@@ -40,17 +38,17 @@ class GenerateScriptsCommandTest extends FunctionalTestCase
     /**
      * Template method.
      */
-    static public function doSetUpBeforeClass()
+    public static function doSetUpBeforeClass()
     {
-        self::$scriptsDir = __DIR__ . '/../../../';
+        self::$scriptsDir = __DIR__.'/../../../';
 
         static::deleteGeneratedScripts();
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    static public function doTearDownAfterClass()
+    public static function doTearDownAfterClass()
     {
         static::deleteGeneratedScripts();
     }

@@ -37,7 +37,7 @@ class JsResourcesProvider implements ContributorInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getItems()
     {
@@ -48,7 +48,7 @@ class JsResourcesProvider implements ContributorInterface
         $webDir = implode(DIRECTORY_SEPARATOR, [
             $this->kernelDir,
             '..',
-            $webDirectoryName
+            $webDirectoryName,
         ]);
 
         if (!file_exists($webDir)) {
@@ -57,7 +57,7 @@ class JsResourcesProvider implements ContributorInterface
 
         $filesToContribute = [
             $this->semanticConfig['compiler']['mjr_output_file'],
-            $this->semanticConfig['compiler']['output_file']
+            $this->semanticConfig['compiler']['output_file'],
         ];
 
         $result = [];
@@ -65,7 +65,7 @@ class JsResourcesProvider implements ContributorInterface
         foreach ($filesToContribute as $path) {
             if (substr($path, 0, strlen($webDirectoryName)) == $webDirectoryName) {
                 $pathWithoutWeb = substr($path, strlen($webDirectoryName));
-                if (file_exists($webDir . $pathWithoutWeb)) {
+                if (file_exists($webDir.$pathWithoutWeb)) {
                     $result[] = $pathWithoutWeb;
                 }
             }
@@ -82,7 +82,7 @@ class JsResourcesProvider implements ContributorInterface
     /**
      * @return string
      */
-    static public function clazz()
+    public static function clazz()
     {
         return get_called_class();
     }

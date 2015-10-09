@@ -45,7 +45,7 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
         $paths = array_unique($paths);
 
         $hostDir = implode(DIRECTORY_SEPARATOR, [
-            getcwd(), $config['workspace_dir'], 'packages', $config['package_name'], 'src'
+            getcwd(), $config['workspace_dir'], 'packages', $config['package_name'], 'src',
         ]);
 
         $skippedFiles = [];
@@ -53,7 +53,7 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
 
         foreach ($paths as $jsPath) {
             if ($filesystem->exists($jsPath)) {
-                foreach ($finder->in($jsPath)->name('*.js') as $filename=>$file) {
+                foreach ($finder->in($jsPath)->name('*.js') as $filename => $file) {
                     /* @var SplFileInfo $file */
 
                     $contents = file_get_contents($filename);
@@ -68,23 +68,23 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
 
                         $namespaceToPath = implode(DIRECTORY_SEPARATOR, $namespace);
 
-                        $targetDir = $hostDir . DIRECTORY_SEPARATOR . $namespaceToPath;
+                        $targetDir = $hostDir.DIRECTORY_SEPARATOR.$namespaceToPath;
 
                         if (!$filesystem->exists($targetDir)) {
                             $filesystem->mkdir($targetDir);
                         }
 
-                        $newFilepath = $targetDir . DIRECTORY_SEPARATOR . $file->getFilename();
+                        $newFilepath = $targetDir.DIRECTORY_SEPARATOR.$file->getFilename();
 
                         $copiedFiles[] = array(
                             'source' => $filename,
-                            'target' => $newFilepath
+                            'target' => $newFilepath,
                         );
 
                         if ($trackProgress) {
-                            $output->writeln(' ' . $filename);
+                            $output->writeln(' '.$filename);
                             $output->writeln(' copied to');
-                            $output->writeln(' ' . $newFilepath);
+                            $output->writeln(' '.$newFilepath);
                             $output->writeln('');
                         }
 
@@ -93,7 +93,6 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
                         $skippedFiles[] = $filename;
                     }
                 }
-
             }
         }
 
@@ -107,7 +106,7 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
                 sprintf(' <comment>%d files were skipped because they seem to contain no Extjs class: </comment>', count($skippedFiles))
             );
             foreach ($skippedFiles as $filename) {
-                $output->writeln(' - ' . $filename);
+                $output->writeln(' - '.$filename);
             }
         }
     }

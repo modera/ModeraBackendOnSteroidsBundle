@@ -15,7 +15,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * @var string
      */
-    static private $webPath;
+    private static $webPath;
 
     public static function setUpBeforeClass()
     {
@@ -31,7 +31,6 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-
     private function createMockContainer(array $compilerConfig)
     {
         $container = \Phake::mock('Symfony\Component\DependencyInjection\ContainerInterface');
@@ -42,7 +41,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
         \Phake::when($container)
             ->getParameter(ModeraBackendOnSteroidsExtension::CONFIG_KEY)
             ->thenReturn(array(
-                'compiler' => $compilerConfig
+                'compiler' => $compilerConfig,
             ))
         ;
 
@@ -53,7 +52,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->createMockContainer(array(
             'mjr_output_file' => 'web/backend-on-steroids/MJR.js',
-            'output_file' => 'web/backend-on-steroids/bundles.js'
+            'output_file' => 'web/backend-on-steroids/bundles.js',
         ));
 
         return new JsResourcesProvider($container);
