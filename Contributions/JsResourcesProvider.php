@@ -7,7 +7,9 @@ use Sli\ExpanderBundle\Ext\ContributorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * If both MJR.js and bundles.js files exist then they will be contributed.
+ * If both MJR.js and bundles.js files exist then they will be contributed. When files are contributed their
+ * last modification time is added as a suffix, this makes it possible to invalidate browser's cache without
+ * extra work.
  *
  * See compiler/mjr_output_file and compiler/output_file configuration properties.
  *
@@ -65,8 +67,19 @@ class JsResourcesProvider implements ContributorInterface
         foreach ($filesToContribute as $path) {
             if (substr($path, 0, strlen($webDirectoryName)) == $webDirectoryName) {
                 $pathWithoutWeb = substr($path, strlen($webDirectoryName));
-                if (file_exists($webDir.$pathWithoutWeb)) {
-                    $result[] = $pathWithoutWeb;
+                $pathname = $webDir.$pathWithoutWeb;
+
+                if (file_exists($pathname)) {
+                    $lastModificationTimestamp = filemtime($pathname);
+                    if (!$lastModificationTimestamp) {
+                        throw new \RuntimeException('Unable to get last modification time for file '.$pathname);
+                    }
+
+                    // MPFE-782
+                    // In case user's browser has cached files and server is configured that it doesn't
+                    // issue meta-request to check last modification time, then this is going to help
+                    // to invalidate browser's cache
+                    $result[] = $pathWithoutWeb.'?'.$lastModificationTimestamp;
                 }
             }
         }

@@ -93,6 +93,8 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
     {
         $assetPath = implode(DIRECTORY_SEPARATOR, [self::$webPath, 'backend-on-steroids', $name]);
         file_put_contents($assetPath, 'foojs');
+
+        return filemtime($assetPath);
     }
 
     public function testGetItemsWhenOneAssetExists()
@@ -112,8 +114,8 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
     {
         $this->createDirsIfNeeded();
 
-        $this->createAsset('MJR.js');
-        $this->createAsset('bundles.js');
+        $mjrModificationTime = $this->createAsset('MJR.js');
+        $bundlesModificationTime = $this->createAsset('bundles.js');
 
         $provider = $this->createIUT();
 
@@ -121,7 +123,16 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(2, count($resources));
 
-        $this->assertEquals('/backend-on-steroids/MJR.js', $resources[0]);
-        $this->assertEquals('/backend-on-steroids/bundles.js', $resources[1]);
+        $modificationTimes = [];
+        foreach (['/backend-on-steroids/MJR.js', '/backend-on-steroids/bundles.js'] as $i => $filename) {
+            $this->assertTrue(false !== strpos($resources[$i], $filename));
+
+            $lastModifiedTime = substr($resources[$i], strpos($resources[$i], '?') + 1);
+            $this->assertTrue('' != $lastModifiedTime);
+            $modificationTimes[] = $lastModifiedTime;
+        }
+
+        $this->assertEquals($mjrModificationTime, $modificationTimes[0]);
+        $this->assertEquals($bundlesModificationTime, $modificationTimes[1]);
     }
 }
