@@ -49,12 +49,14 @@ you can use `modera_backend_on_steroids/compiler/path_patterns` configuration pr
 
 1. $ `modera:backend-on-steroids:generate-scripts`
 2. Make generated scripts executable (when `modera:backend-on-steroids:generate-scripts` is executed required shell command is printed that you can use)
-3. $ `./steroids-compile-bundles.sh`
-4. $ `./steroids-compile-mjr.sh`
+3. $ `./steroids-setup.sh`
+4. $ `./steroids-compile-bundles.sh`
+5. $ `./steroids-compile-mjr.sh`
 
 Once this steps are completed, given that you haven't changed this bundle's semantic configuration
 `compiler/path_patterns` property), when you refresh backend you should see that MJR.js and bundles.js are
-automatically included using "script" tags.
+automatically included using "script" tags. Script `steroids-setup.sh` you need to execute only once per
+foundation installation or after you have used `steroids-cleanup.sh`.
 
 ### Troubleshooting
 
