@@ -1,6 +1,7 @@
 {
     "name": "modera/backend-on-steroids-bundle",
     "type": "symfony-bundle",
+    "description": "Bundle makes it easier to optimize MJR based backend's loading speed for up to 50%.",
     "license": "MIT",
     "authors": [
         {

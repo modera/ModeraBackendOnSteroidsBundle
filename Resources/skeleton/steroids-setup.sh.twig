@@ -9,7 +9,7 @@ mkdir -p {{ output_file_dir }}
 
 echo
 echo "*** CLONING GIT REPOSITORIES ***"
-git clone ssh://git@stash.dev.modera.org:7999/mf/extjs-workspace.git $workspace_dir
+git clone git@bitbucket.org:moderasoftware/extjs-workspace.git $workspace_dir
 cd $workspace_dir
 ./update-packages.sh --init
 
