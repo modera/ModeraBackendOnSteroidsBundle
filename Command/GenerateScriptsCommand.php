@@ -58,7 +58,9 @@ class GenerateScriptsCommand extends GeneratorCommand
         );
     }
 
-    // override
+    /**
+     * {@inheritdoc}
+     */
     protected function getSkeletonDirs(BundleInterface $bundle = null)
     {
         return [
