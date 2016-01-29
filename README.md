@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/modera/ModeraBackendOnSteroidsBundle.svg?branch=1.0)](https://travis-ci.org/modera/ModeraBackendOnSteroidsBundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/modera/ModeraBackendOnSteroidsBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/modera/ModeraBackendOnSteroidsBundle/?branch=master)
 [![StyleCI](https://styleci.io/repos/42174529/shield)](https://styleci.io/repos/42174529)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3344faef-45b0-4cf9-8d7a-e2e817f0588f/mini.png)](https://insight.sensiolabs.com/projects/3344faef-45b0-4cf9-8d7a-e2e817f0588f)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c5687019-0631-4cb3-a30c-cb3fc1bcebad/mini.png)](https://insight.sensiolabs.com/projects/c5687019-0631-4cb3-a30c-cb3fc1bcebad)
 
 Bundle makes it easier to optimize backend's loading speed for up to 50%, it does it in several ways:
 
