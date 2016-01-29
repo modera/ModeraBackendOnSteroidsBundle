@@ -11,7 +11,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class ModeraBackendDummyBundle extends Bundle
 {
-    // override
+    /**
+     * {@inheritdoc}
+     */
     public function build(ContainerBuilder $container)
     {
         $container->registerExtension(new ModeraBackendDummyExtension());

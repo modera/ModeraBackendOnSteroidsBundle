@@ -15,7 +15,9 @@ use Symfony\Component\Finder\SplFileInfo;
  */
 class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
 {
-    // override
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -25,7 +27,9 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
         ;
     }
 
-    // override
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $trackProgress = $input->getOption('track-progress');

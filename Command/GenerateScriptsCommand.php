@@ -14,7 +14,9 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
  */
 class GenerateScriptsCommand extends GeneratorCommand
 {
-    // override
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -23,7 +25,9 @@ class GenerateScriptsCommand extends GeneratorCommand
         ;
     }
 
-    // override
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $semanticConfig = $this->getContainer()->getParameter(ModeraBackendOnSteroidsExtension::CONFIG_KEY);
@@ -62,7 +66,9 @@ class GenerateScriptsCommand extends GeneratorCommand
         ];
     }
 
-    // override
+    /**
+     * {@inheritdoc}
+     */
     protected function createGenerator()
     {
         return new ShellScriptsGenerator();

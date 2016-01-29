@@ -8,7 +8,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class ModeraBackendOnSteroidsBundle extends Bundle
 {
-    // override
+    /**
+     * {@inheritdoc}
+     */
     public function build(ContainerBuilder $container)
     {
         $routingResourcesProvider = new ExtensionPoint('modera_backend_on_steroids.extjs_classes_paths');
