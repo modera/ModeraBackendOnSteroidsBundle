@@ -25,5 +25,10 @@
     "autoload": {
         "psr-0": { "Modera\\BackendOnSteroidsBundle": "" }
     },
-    "target-dir": "Modera/BackendOnSteroidsBundle"
+    "target-dir": "Modera/BackendOnSteroidsBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.x-dev"
+        }
+    }
 }
