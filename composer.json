@@ -15,7 +15,7 @@
         "symfony/symfony": "~2.0",
         "sensio/generator-bundle": "~2.3",
         "sergeil/expander-bundle": "~1.0",
-        "modera/mjr-integration-bundle": "~1.3"
+        "modera/mjr-integration-bundle": "~2.0|~1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
