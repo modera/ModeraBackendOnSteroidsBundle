@@ -5,27 +5,38 @@ package_name={{ package_name }}
 
 ###
 
+set -e
+
 mkdir -p {{ output_file_dir }}
 
 echo
-echo "*** CLONING GIT REPOSITORIES ***"
-git clone git@bitbucket.org:moderasoftware/extjs-workspace.git $workspace_dir
-cd $workspace_dir
-./update-packages.sh --init
+if [ -d "$workspace_dir" ]; then
+    echo "NB! It appears that steroids have already been cloned, skipping this step."
+
+    cd $workspace_dir
+else
+    echo "*** CLONING GIT REPOSITORIES ***"
+    git clone git@bitbucket.org:moderasoftware/extjs-workspace.git $workspace_dir
+    cd $workspace_dir
+    ./update-packages.sh --init
+fi
 
 echo
 echo "*** GENERATING A PACKAGE ***"
 docker run -it --rm -v `pwd`:/var/www $docker_sencha_image sencha generate package $package_name
 sudo chown `whoami` . -R
 
-echo
-echo "*** UPDATING CONFIG FILES ***"
-printf "\n# added by steroids:\npackage.framework=ext" >> packages/bundles/.sencha/package/sencha.cfg
-printf "\n# added by steroids (prevents using yui, which may throw compilation errors):\nbuild.compile.js.compress=" >> packages/bundles/.sencha/package/build.properties
+# script could be accidentally executed more than once by a developer, here we are avoid
+# updating configuration files twice
+if ! grep -q steroids "packages/bundles/.sencha/package/sencha.cfg"; then
+    echo "*** UPDATING CONFIG FILES ***"
+    printf "\n# added by steroids:\npackage.framework=ext" >> packages/bundles/.sencha/package/sencha.cfg
+    printf "\n# added by steroids (prevents using yui, which may throw compilation errors):\nbuild.compile.js.compress=" >> packages/bundles/.sencha/package/build.properties
 
-cd packages/$package_name
-perl -pi -e 's/\"requires\": \[/"requires": \[\n        "MJR"\n    /g' package.json
-cd ../../
+    cd packages/$package_name
+    perl -pi -e 's/\"requires\": \[/"requires": \[\n        "MJR"\n    /g' package.json
+    cd ../../
+fi
 
 echo
 echo "**** DOING A PACKAGE BUILD TO VERIFY INSTALLATION ***"
