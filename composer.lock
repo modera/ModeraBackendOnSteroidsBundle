@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "babdde8f1e1d051c8583d6942abbd15d",
-    "content-hash": "b7cf546da70a6862e01487746947e425",
+    "hash": "2be1ad803ca53fec9ec1b8dfdc5144e7",
+    "content-hash": "be553b058c77edfff7eaed0754256ed6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -449,17 +449,17 @@
         },
         {
             "name": "modera/direct-bundle",
-            "version": "v1.2.4",
+            "version": "v2.52.2",
             "target-dir": "Modera/DirectBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/modera/ModeraDirectBundle.git",
-                "reference": "eea798380c079b1a617606249e56c11da7ee6cae"
+                "reference": "c7af0332946d9a7b1a9d941e6b1d7add4288f5ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/modera/ModeraDirectBundle/zipball/eea798380c079b1a617606249e56c11da7ee6cae",
-                "reference": "eea798380c079b1a617606249e56c11da7ee6cae",
+                "url": "https://api.github.com/repos/modera/ModeraDirectBundle/zipball/c7af0332946d9a7b1a9d941e6b1d7add4288f5ea",
+                "reference": "c7af0332946d9a7b1a9d941e6b1d7add4288f5ea",
                 "shasum": ""
             },
             "require": {
@@ -473,7 +473,7 @@
                     "register-bundle": "Modera\\DirectBundle\\ModeraDirectBundle"
                 },
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -497,21 +497,21 @@
                 "extdirect",
                 "extjs"
             ],
-            "time": "2016-05-31 11:08:41"
+            "time": "2016-09-05 07:27:02"
         },
         {
             "name": "modera/mjr-integration-bundle",
-            "version": "v2.1.0",
+            "version": "v2.52.2",
             "target-dir": "Modera/MjrIntegrationBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/modera/ModeraMjrIntegrationBundle.git",
-                "reference": "25807c61928edaaa89b9db2b6acc4f9597f056c6"
+                "reference": "47cc37a9b27202e4188282ca205f1774000598c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/modera/ModeraMjrIntegrationBundle/zipball/25807c61928edaaa89b9db2b6acc4f9597f056c6",
-                "reference": "25807c61928edaaa89b9db2b6acc4f9597f056c6",
+                "url": "https://api.github.com/repos/modera/ModeraMjrIntegrationBundle/zipball/47cc37a9b27202e4188282ca205f1774000598c8",
+                "reference": "47cc37a9b27202e4188282ca205f1774000598c8",
                 "shasum": ""
             },
             "require": {
@@ -521,13 +521,13 @@
                 "symfony/symfony": "~2.0"
             },
             "require-dev": {
-                "phake/phake": "2.*",
-                "phpunit/phpunit": "3.*"
+                "phake/phake": "~2.0",
+                "phpunit/phpunit": "^5.5"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -551,7 +551,7 @@
             "keywords": [
                 "mjr"
             ],
-            "time": "2016-06-14 12:20:37"
+            "time": "2016-09-05 07:27:02"
         },
         {
             "name": "paragonie/random_compat",
@@ -603,22 +603,30 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
+                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=5.3.0"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Psr\\Log\\": ""
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -632,47 +640,52 @@
                 }
             ],
             "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
             "keywords": [
                 "log",
                 "psr",
                 "psr-3"
             ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2016-09-19 16:02:08"
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.5.3",
-            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "version": "v3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3"
+                "reference": "3c20d16512f37d2be159eca0411b99a141b90fa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/e50108c2133ee5c9c484555faed50c17a61221d3",
-                "reference": "e50108c2133ee5c9c484555faed50c17a61221d3",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/3c20d16512f37d2be159eca0411b99a141b90fa4",
+                "reference": "3c20d16512f37d2be159eca0411b99a141b90fa4",
                 "shasum": ""
             },
             "require": {
-                "symfony/console": "~2.5",
-                "symfony/framework-bundle": "~2.2"
+                "symfony/console": "~2.7|~3.0",
+                "symfony/framework-bundle": "~2.7|~3.0",
+                "symfony/process": "~2.7|~3.0",
+                "symfony/yaml": "~2.7|~3.0"
             },
             "require-dev": {
-                "doctrine/orm": "~2.2,>=2.2.3",
-                "symfony/doctrine-bridge": "~2.2",
-                "twig/twig": "~1.11"
+                "doctrine/orm": "~2.4",
+                "symfony/doctrine-bridge": "~2.7|~3.0",
+                "twig/twig": "~1.18"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Sensio\\Bundle\\GeneratorBundle": ""
-                }
+                "psr-4": {
+                    "Sensio\\Bundle\\GeneratorBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -685,7 +698,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2015-03-17 06:36:52"
+            "time": "2016-09-06 01:30:19"
         },
         {
             "name": "sergeil/expander-bundle",
@@ -1249,16 +1262,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.8",
+            "version": "v2.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "038d13264f732f9bba850c423e374dc72874d1a6"
+                "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/038d13264f732f9bba850c423e374dc72874d1a6",
-                "reference": "038d13264f732f9bba850c423e374dc72874d1a6",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
+                "reference": "f588c92c3e263b2eaa2f96a7b1359199eb209b3d",
                 "shasum": ""
             },
             "require": {
@@ -1379,20 +1392,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-06-30 15:42:24"
+            "time": "2016-09-07 02:04:25"
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.1",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
+                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/f16a634ab08d87e520da5671ec52153d627f10f6",
+                "reference": "f16a634ab08d87e520da5671ec52153d627f10f6",
                 "shasum": ""
             },
             "require": {
@@ -1405,7 +1418,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.24-dev"
+                    "dev-master": "1.25-dev"
                 }
             },
             "autoload": {
@@ -1440,23 +1453,23 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-05-30 09:11:59"
+            "time": "2016-09-21 23:05:12"
         }
     ],
     "packages-dev": [
         {
             "name": "modera/foundation-bundle",
-            "version": "v1.1.2",
+            "version": "v2.52.2",
             "target-dir": "Modera/FoundationBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/modera/ModeraFoundationBundle.git",
-                "reference": "eebf69f856388b055b9aea8cad2ad1c0374876c7"
+                "reference": "e2daf8b114573e3c42becf362b41a67edd922b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/modera/ModeraFoundationBundle/zipball/eebf69f856388b055b9aea8cad2ad1c0374876c7",
-                "reference": "eebf69f856388b055b9aea8cad2ad1c0374876c7",
+                "url": "https://api.github.com/repos/modera/ModeraFoundationBundle/zipball/e2daf8b114573e3c42becf362b41a67edd922b17",
+                "reference": "e2daf8b114573e3c42becf362b41a67edd922b17",
                 "shasum": ""
             },
             "require": {
@@ -1464,12 +1477,12 @@
                 "symfony/symfony": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "^5.5"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -1488,7 +1501,7 @@
                     "homepage": "http://sergei.lissovski.org/"
                 }
             ],
-            "time": "2015-10-05 06:51:09"
+            "time": "2016-09-22 05:51:50"
         },
         {
             "name": "phake/phake",

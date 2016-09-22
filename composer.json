@@ -13,14 +13,14 @@
     "require": {
         "php": ">=5.4.0",
         "symfony/symfony": "~2.0",
-        "sensio/generator-bundle": "~2.3",
+        "sensio/generator-bundle": "~2.3|~3.0",
         "sergeil/expander-bundle": "~1.0",
         "modera/mjr-integration-bundle": "~2.0|~1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
         "phake/phake": "2.*",
-        "modera/foundation-bundle": "~1.0"
+        "modera/foundation-bundle": "~1.0|~2.0"
     },
     "autoload": {
         "psr-0": { "Modera\\BackendOnSteroidsBundle": "" }
