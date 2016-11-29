@@ -23,7 +23,13 @@ fi
 
 echo
 echo "*** GENERATING A PACKAGE ***"
-docker run -it --rm -v `pwd`:/var/www $docker_sencha_image sencha generate package $package_name
+if [ -t 1 ] ; then
+    # interactive terminal
+    docker run -it --rm -v `pwd`:/var/www $docker_sencha_image sencha generate package $package_name
+else
+    # non-tty, like CI
+    docker run --rm -v `pwd`:/var/www $docker_sencha_image sencha generate package $package_name
+fi
 sudo chown `whoami` . -R
 
 # script could be accidentally executed more than once by a developer, here we are avoid
@@ -40,7 +46,11 @@ fi
 
 echo
 echo "**** DOING A PACKAGE BUILD TO VERIFY INSTALLATION ***"
-docker run -it --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
+if [ -t 1 ] ; then
+    # interactive terminal
+    docker run -it --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
+else
+    # non-tty, like CI
+    docker run --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
+fi
 sudo chown `whoami` . -R
-
-# docker run -it --rm -v `pwd`:/var/www -w /var/www/packages/bundles cravler/sencha-cmd:4 sencha package build
