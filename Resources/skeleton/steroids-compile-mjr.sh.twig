@@ -12,7 +12,7 @@ fi
 cd $workspace_dir
 ./build.sh
 
-sudo chown `whoami` . -R
+sudo chown -R `whoami` .
 cp packages/modera-runtime/build/MJR.js $initial_dir/$mjr_output_file
 
 echo "*** DONE! ***"

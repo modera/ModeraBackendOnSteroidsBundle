@@ -30,7 +30,7 @@ else
     # non-tty, like CI
     docker run --rm -v `pwd`:/var/www $docker_sencha_image sencha generate package $package_name
 fi
-sudo chown `whoami` . -R
+sudo chown -R `whoami` .
 
 # script could be accidentally executed more than once by a developer, here we are avoid
 # updating configuration files twice
@@ -53,4 +53,4 @@ else
     # non-tty, like CI
     docker run --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
 fi
-sudo chown `whoami` . -R
+sudo chown -R `whoami` .

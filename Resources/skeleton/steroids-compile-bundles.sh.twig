@@ -19,7 +19,7 @@ else
     # non-tty, like CI
     docker run --rm -v `pwd`:/var/www -w /var/www/packages/$package_name $docker_sencha_image sencha package build
 fi
-sudo chown `whoami` . -R
+sudo chown -R `whoami` .
 cp packages/$package_name/build/$package_name.js $initial_dir/$result_file
 
 echo
