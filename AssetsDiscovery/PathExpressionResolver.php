@@ -9,6 +9,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
  * Given that system has these bundles installed: FooXBundle, FooYBundle, after invoking `resolve` method
  * with expression "@Foo.*Bundle", paths of bundles FooXBundle and FooYBundle will be returned.
  *
+ * In case 'excluded_namespaces' parameter is present all bundles name fill be
+ * filtered by it. "@Foo.*Bundle", excluded "@FoxXBundle", "FoxYBundle" will be returned
+ *
  * @author    Sergei Lissovski <sergei.lissovski@modera.org>
  * @copyright 2015 Modera Foundation
  */
@@ -50,10 +53,15 @@ class PathExpressionResolver
 
             /* @var BundleInterface[] $matchedBundles */
             $matchedBundles = [];
+
             foreach ($this->kernel->getBundles() as $bundle) {
                 /* @var BundleInterface $bundle */
 
                 $regex = '|^'.$bundleName.'$|';
+
+                if (array_search('@'.$bundle->getName(), $this->getExcludedNamespaces()) !== false) {
+                    continue;
+                }
 
                 if (preg_match($regex, $bundle->getName())) {
                     $matchedBundles[] = $bundle;
@@ -79,5 +87,21 @@ class PathExpressionResolver
         }
 
         return [$pathExpression];
+    }
+
+    /**
+     * @return array
+     */
+    private function getExcludedNamespaces()
+    {
+        if (!$this->kernel->getContainer()->hasParameter('modera_backend_on_steroids.config') ) return [];
+
+        $config = $this->kernel->getContainer()->getParameter('modera_backend_on_steroids.config');
+
+        if (!is_array($config)) return [];
+
+        if (empty($config['compiler']['excluded_namespaces'])) return [];
+
+        return $config['compiler']['excluded_namespaces'];
     }
 }

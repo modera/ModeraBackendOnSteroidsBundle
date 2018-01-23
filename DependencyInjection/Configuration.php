@@ -55,6 +55,11 @@ class Configuration implements ConfigurationInterface
                             ->defaultValue(['@ModeraBackend.*Bundle/Resources/public/js'])
                             ->prototype('scalar')->end()
                         ->end()
+                        // List of bundles names with leading @ to exclude from bundles building
+                        ->arrayNode('excluded_namespaces')
+                            ->defaultValue([])
+                            ->prototype('scalar')->end()
+                        ->end()
                     ->end()
                 ->end()
                 // By default if the bundle detects that both MJR.js and bundle.js files exist they will be included
