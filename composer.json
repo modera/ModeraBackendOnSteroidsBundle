@@ -11,16 +11,16 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "symfony/symfony": "~2.0",
+        "php": ">=5.6",
+        "symfony/symfony": "~2.0|~3.0",
+        "modera/mjr-integration-bundle": "~1.3|~2.0|~3.0",
         "sensio/generator-bundle": "~2.3|~3.0",
-        "sergeil/expander-bundle": "~1.0",
-        "modera/mjr-integration-bundle": "~2.0|~1.3"
+        "sergeil/expander-bundle": "~1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*",
         "phake/phake": "2.*",
-        "modera/foundation-bundle": "~1.0|~2.0"
+        "phpunit/phpunit": "3.7.*",
+        "modera/foundation-bundle": "~1.0|~2.0|~3.0"
     },
     "autoload": {
         "psr-0": { "Modera\\BackendOnSteroidsBundle": "" }
@@ -28,7 +28,7 @@
     "target-dir": "Modera/BackendOnSteroidsBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "3.x-dev"
+            "dev-master": "1.x-dev"
         }
     }
 }
