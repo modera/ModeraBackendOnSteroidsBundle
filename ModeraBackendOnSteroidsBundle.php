@@ -24,7 +24,7 @@ use Sli\ExpanderBundle\Ext\ContributorInterface;
 class ExtjsClassesProvider implements ContributorInterface
 {
     /**
-     * @inheritDoc
+     * @{inheritdoc}
      */
     public function getItems()
     {
