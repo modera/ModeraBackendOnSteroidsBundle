@@ -11,8 +11,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
 
-            new Modera\FoundationBundle\ModeraFoundationBundle(),
             new Sli\ExpanderBundle\SliExpanderBundle(),
+            new Modera\FoundationBundle\ModeraFoundationBundle(),
             new Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle(),
 
             new Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\ModeraBackendDummyBundle(),

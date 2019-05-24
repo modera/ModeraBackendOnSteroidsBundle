@@ -2,13 +2,13 @@
 
 namespace Modera\BackendOnSteroidsBundle\Command;
 
-use Modera\BackendOnSteroidsBundle\AssetsDiscovery\PathExpressionResolver;
 use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
+use Modera\BackendOnSteroidsBundle\AssetsDiscovery\PathExpressionResolver;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
+use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\Finder\Finder;
 
 /**
  * @author Sergei Lissovski <sergei.lissovski@gmail.com>

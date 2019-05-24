@@ -21,7 +21,9 @@ class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit_Framework_TestCase
             ),
         );
 
+        $ParameterBag = \Phake::mock('Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface');
         $containerBuilder = \Phake::mock('Symfony\Component\DependencyInjection\ContainerBuilder');
+        \Phake::when($containerBuilder)->getParameterBag()->thenReturn($ParameterBag);
 
         $ext->load($config, $containerBuilder);
 

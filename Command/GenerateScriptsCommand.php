@@ -2,18 +2,35 @@
 
 namespace Modera\BackendOnSteroidsBundle\Command;
 
-use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
-use Modera\BackendOnSteroidsBundle\Generators\ShellScriptsGenerator;
-use Sensio\Bundle\GeneratorBundle\Command\GeneratorCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
+use Modera\BackendOnSteroidsBundle\Generators\ShellScriptsGenerator;
 
 /**
  * @author Sergei Lissovski <sergei.lissovski@gmail.com>
  */
-class GenerateScriptsCommand extends GeneratorCommand
+class GenerateScriptsCommand extends ContainerAwareCommand
 {
+    /**
+     * @var ShellScriptsGenerator
+     */
+    private $generator;
+
+    /**
+     * @return ShellScriptsGenerator
+     */
+    protected function getGenerator()
+    {
+        if (null === $this->generator) {
+            $this->generator = new ShellScriptsGenerator();
+            $this->generator->setSkeletonDirs([ __DIR__.'/../Resources/skeleton' ]);
+        }
+
+        return $this->generator;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -56,23 +73,5 @@ class GenerateScriptsCommand extends GeneratorCommand
         $output->writeln(
             sprintf('sudo chown `whoami` %s && chmod +x %s', implode(' ', $filenames), implode(' ', $filenames))
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getSkeletonDirs(BundleInterface $bundle = null)
-    {
-        return [
-            __DIR__.'/../Resources/skeleton',
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function createGenerator()
-    {
-        return new ShellScriptsGenerator();
     }
 }

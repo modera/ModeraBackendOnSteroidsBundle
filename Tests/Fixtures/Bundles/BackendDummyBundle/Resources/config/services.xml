@@ -6,7 +6,8 @@
 
     <services>
         <service id="modera_backend_dummy_bundle.contributions.steroid_mappings_provider"
-                 class="Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\Contributions\SteroidsMappingsProvider">
+                 class="Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\Contributions\SteroidsMappingsProvider"
+                 public="true">
 
             <tag name="modera_backend_on_steroids.extjs_classes_paths_provider" />
         </service>
