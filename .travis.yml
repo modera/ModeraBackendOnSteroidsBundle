@@ -1,21 +1,7 @@
 language: php
 
 php:
-  - 5.6
-
-matrix:
-  include:
-    - php: 5.6
-      env: SYMFONY_VERSION=^2.8
-    - php: 5.6
-      env: SYMFONY_VERSION=^3.4
-    - php: 7.1
-      env: SYMFONY_VERSION=^4.0
-
-before_install:
-  - if [ "$SYMFONY_VERSION" != "" ]; then composer require --dev "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
-  - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - 7.2
 
 before_script:
-  - if [[ ${TRAVIS_PHP_VERSION:0:3} != "5.6" ]]; then rm composer.lock; fi;
-  - COMPOSER_MEMORY_LIMIT=-1 composer install
+  - composer install
