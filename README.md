@@ -1,7 +1,5 @@
 # ModeraBackendOnSteroidsBundle
 
-[![Build Status](https://travis-ci.org/modera/ModeraBackendOnSteroidsBundle.svg?branch=1.0)](https://travis-ci.org/modera/ModeraBackendOnSteroidsBundle)
-
 Bundle makes it easier to optimize backend's loading speed for up to 50%, it does it in several ways:
 
  * Provides console commands which can generate shell scripts which can be used to compile all bundle's
