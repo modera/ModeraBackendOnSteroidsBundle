@@ -73,5 +73,7 @@ class GenerateScriptsCommand extends ContainerAwareCommand
         $output->writeln(
             sprintf('sudo chown `whoami` %s && chmod +x %s', implode(' ', $filenames), implode(' ', $filenames))
         );
+
+        return 0;
     }
 }

@@ -113,5 +113,7 @@ class CopyClassesToWorkspaceCommand extends ContainerAwareCommand
                 $output->writeln(' - '.$filename);
             }
         }
+
+        return 0;
     }
 }
