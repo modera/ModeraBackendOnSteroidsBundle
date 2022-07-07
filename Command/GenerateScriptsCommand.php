@@ -4,14 +4,13 @@ namespace Modera\BackendOnSteroidsBundle\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
 use Modera\BackendOnSteroidsBundle\Generators\ShellScriptsGenerator;
 
 /**
  * @author Sergei Lissovski <sergei.lissovski@gmail.com>
  */
-class GenerateScriptsCommand extends ContainerAwareCommand
+class GenerateScriptsCommand extends AbstractCommand
 {
     /**
      * @var ShellScriptsGenerator
