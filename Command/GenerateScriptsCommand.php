@@ -44,7 +44,7 @@ class GenerateScriptsCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $semanticConfig = $this->getContainer()->getParameter(ModeraBackendOnSteroidsExtension::CONFIG_KEY);
         $compilerConfig = $semanticConfig['compiler'];

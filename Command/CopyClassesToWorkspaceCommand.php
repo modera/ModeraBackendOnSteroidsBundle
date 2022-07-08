@@ -29,7 +29,7 @@ class CopyClassesToWorkspaceCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $trackProgress = $input->getOption('track-progress');
 
