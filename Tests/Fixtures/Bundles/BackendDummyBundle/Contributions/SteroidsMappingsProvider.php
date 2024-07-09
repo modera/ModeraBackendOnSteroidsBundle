@@ -9,10 +9,7 @@ use Sli\ExpanderBundle\Ext\ContributorInterface;
  */
 class SteroidsMappingsProvider implements ContributorInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getItems()
+    public function getItems(): array
     {
         return array(
             '@ModeraBackendDummyBundle/Resources/public/js',

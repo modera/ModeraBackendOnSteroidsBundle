@@ -23,10 +23,7 @@ use Sli\ExpanderBundle\Ext\ContributorInterface;
 
 class ExtjsClassesProvider implements ContributorInterface
 {
-    /**
-     * @{inheritdoc}
-     */
-    public function getItems()
+    public function getItems(): array
     {
         return array(
             '@MyFooBundle/Resources/public/js'

@@ -27,10 +27,7 @@ class SemanticConfigCompilerPathsProvider implements ContributorInterface
         $this->semanticConfig = $semanticConfig;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getItems()
+    public function getItems(): array
     {
         return $this->semanticConfig['compiler']['path_patterns'];
     }

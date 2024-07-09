@@ -38,10 +38,7 @@ class JsResourcesProvider implements ContributorInterface
         $this->semanticConfig = $container->getParameter(ModeraBackendOnSteroidsExtension::CONFIG_KEY);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getItems()
+    public function getItems(): array
     {
         $webDirectoryName = 'web';
 
