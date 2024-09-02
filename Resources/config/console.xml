@@ -6,6 +6,11 @@
 
     <services>
         <defaults public="false" />
+
+        <service id="modera_backend_on_steroids.filesystem"
+                 alias="filesystem"
+                 public="true" />
+
         <prototype namespace="Modera\BackendOnSteroidsBundle\Command\"
                    resource="../../Command/*"
                    exclude="../../Command/{AbstractCommand.php}"

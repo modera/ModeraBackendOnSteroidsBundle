@@ -16,7 +16,7 @@ class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
     public static function cleanUp()
     {
         /* @var Filesystem $filesystem */
-        $filesystem = self::$container->get('filesystem');
+        $filesystem = self::$container->get('modera_backend_on_steroids.filesystem');
 
         $dir = getcwd().DIRECTORY_SEPARATOR.'.mega-steroids';
 

@@ -35,7 +35,7 @@ class CopyClassesToWorkspaceCommand extends AbstractCommand
 
         $config = $this->getContainer()->getParameter(ModeraBackendOnSteroidsExtension::CONFIG_KEY)['compiler'];
 
-        $filesystem = $this->getContainer()->get('filesystem');
+        $filesystem = $this->getContainer()->get('modera_backend_on_steroids.filesystem');
         $provider = $this->getContainer()->get('modera_backend_on_steroids.extjs_classes_paths_provider');
         /* @var PathExpressionResolver $pathExpressionsResolver */
         $pathExpressionsResolver = $this->getContainer()->get('modera_mjr_integration.assets_descovery.path_expression_resolver');
