@@ -3,7 +3,7 @@
 namespace Modera\BackendOnSteroidsBundle\Contributions;
 
 use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
-use Sli\ExpanderBundle\Ext\ContributorInterface;
+use Modera\ExpanderBundle\Ext\ContributorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @see \Modera\BackendOnSteroidsBundle\DependencyInjection\Configuration
  *
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
+ * @copyright 2015 Modera Foundation
  */
 class JsResourcesProvider implements ContributorInterface
 {

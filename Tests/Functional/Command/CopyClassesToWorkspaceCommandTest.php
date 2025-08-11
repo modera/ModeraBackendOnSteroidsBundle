@@ -8,15 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Filesystem\Filesystem;
 
-/**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
- */
 class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
 {
-    public static function cleanUp()
+    public static function cleanUp(): void
     {
         /* @var Filesystem $filesystem */
-        $filesystem = self::$container->get('modera_backend_on_steroids.filesystem');
+        $filesystem = self::getContainer()->get('modera_backend_on_steroids.filesystem');
 
         $dir = getcwd().DIRECTORY_SEPARATOR.'.mega-steroids';
 
@@ -25,22 +22,19 @@ class CopyClassesToWorkspaceCommandTest extends FunctionalTestCase
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function doTearDownAfterClass()
+    public static function doTearDownAfterClass(): void
     {
         static::cleanUp();
     }
 
-    public static function doSetUpBeforeClass()
+    public static function doSetUpBeforeClass(): void
     {
         static::cleanUp();
     }
 
-    public function testExecute()
+    public function testExecute(): void
     {
-        $app = new Application(self::$container->get('kernel'));
+        $app = new Application(self::getContainer()->get('kernel'));
         $app->setAutoExit(false);
 
         $input = new ArrayInput(array(

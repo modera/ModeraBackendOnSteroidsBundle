@@ -4,12 +4,9 @@ namespace Modera\BackendOnSteroidsBundle\Tests\Unit\Contributions;
 
 use Modera\BackendOnSteroidsBundle\Contributions\SemanticConfigCompilerPathsProvider;
 
-/**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
- */
-class SemanticConfigCompilerPathsProviderTest extends \PHPUnit_Framework_TestCase
+class SemanticConfigCompilerPathsProviderTest extends \PHPUnit\Framework\TestCase
 {
-    public function testGetPaths()
+    public function testGetPaths(): void
     {
         $semanticConfig = array(
             'compiler' => array(

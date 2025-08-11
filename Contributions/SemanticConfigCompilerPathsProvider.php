@@ -2,7 +2,7 @@
 
 namespace Modera\BackendOnSteroidsBundle\Contributions;
 
-use Sli\ExpanderBundle\Ext\ContributorInterface;
+use Modera\ExpanderBundle\Ext\ContributorInterface;
 
 /**
  * This implementations uses semantic config's "compiler/path_patterns" configuration parameter
@@ -10,7 +10,7 @@ use Sli\ExpanderBundle\Ext\ContributorInterface;
  *
  * @see \Modera\BackendOnSteroidsBundle\DependencyInjection\Configuration
  *
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
+ * @copyright 2015 Modera Foundation
  */
 class SemanticConfigCompilerPathsProvider implements ContributorInterface
 {

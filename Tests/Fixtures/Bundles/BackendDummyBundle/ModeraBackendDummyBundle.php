@@ -6,14 +6,8 @@ use Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\Dep
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
- */
 class ModeraBackendDummyBundle extends Bundle
 {
-    /**
-     * {@inheritdoc}
-     */
     public function build(ContainerBuilder $container)
     {
         $container->registerExtension(new ModeraBackendDummyExtension());

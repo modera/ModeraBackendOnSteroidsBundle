@@ -2,7 +2,7 @@
 
 namespace Modera\BackendOnSteroidsBundle;
 
-use Sli\ExpanderBundle\Ext\ExtensionPoint;
+use Modera\ExpanderBundle\Ext\ExtensionPoint;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -19,7 +19,7 @@ This extension point makes your extjs classes visible to "modera:backend-on-ster
 command. Once you have contributed to this extension point you can use "steroids-compile-bundles.sh" script to compile
 all extjs classes together.
 
-use Sli\ExpanderBundle\Ext\ContributorInterface;
+use Modera\ExpanderBundle\Ext\ContributorInterface;
 
 class ExtjsClassesProvider implements ContributorInterface
 {

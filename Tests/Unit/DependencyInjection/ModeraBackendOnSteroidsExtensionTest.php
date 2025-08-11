@@ -5,13 +5,9 @@ namespace Modera\BackendOnSteroidsBundle\Tests\Unit\DependencyInjection;
 use Modera\BackendOnSteroidsBundle\Contributions\JsResourcesProvider;
 use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
 
-/**
- * @author    Sergei Lissovski <sergei.lissovski@modera.org>
- * @copyright 2015 Modera Foundation
- */
-class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit_Framework_TestCase
+class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit\Framework\TestCase
 {
-    private function processConfigAndReturnInvocationStats($injectScripts)
+    private function processConfigAndReturnInvocationStats($injectScripts): array
     {
         $ext = new ModeraBackendOnSteroidsExtension();
 
@@ -39,14 +35,14 @@ class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit_Framework_TestCase
         return $params;
     }
 
-    public function testLoadWithoutInjectScripts()
+    public function testLoadWithoutInjectScripts(): void
     {
         $stats = $this->processConfigAndReturnInvocationStats(false);
 
         $this->assertFalse(array_search('modera_backend_on_steroids.contributions.js_resources_provider', $stats['names']));
     }
 
-    public function testLoadWithInjectScripts()
+    public function testLoadWithInjectScripts(): void
     {
         $stats = $this->processConfigAndReturnInvocationStats(true);
 

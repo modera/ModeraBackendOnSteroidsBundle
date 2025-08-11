@@ -5,7 +5,7 @@ namespace Modera\BackendOnSteroidsBundle\Generators;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
+ * @copyright 2015 Modera Foundation
  */
 class ShellScriptsGenerator
 {
@@ -57,11 +57,11 @@ class ShellScriptsGenerator
     /**
      * Gets the twig environment that will render skeletons.
      *
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
     protected function getTwigEnvironment()
     {
-        return new \Twig_Environment(new \Twig_Loader_Filesystem($this->skeletonDirs), array(
+        return new \Twig\Environment(new \Twig\Loader\FilesystemLoader($this->skeletonDirs), array(
             'debug' => true,
             'cache' => false,
             'strict_variables' => true,

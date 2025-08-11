@@ -6,23 +6,19 @@ use Modera\BackendOnSteroidsBundle\Contributions\JsResourcesProvider;
 use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsExtension;
 use Symfony\Component\Filesystem\Filesystem;
 
-/**
- * @author    Sergei Lissovski <sergei.lissovski@modera.org>
- * @copyright 2015 Modera Foundation
- */
-class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
+class JsResourcesProviderTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var string
      */
     private static $webPath;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$webPath = implode(DIRECTORY_SEPARATOR, [__DIR__, '..', '..', 'Fixtures', 'App', 'app', 'web']);
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         $fs = new Filesystem();
 
@@ -61,7 +57,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException RuntimeException
      */
-    public function testGetItemsWhenWebDirectoryDoesNotExist()
+    public function testGetItemsWhenWebDirectoryDoesNotExist(): void
     {
         $provider = $this->createIUT();
 
@@ -78,7 +74,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testGetItemsWithNeitherOfAssetsExist()
+    public function testGetItemsWithNeitherOfAssetsExist(): void
     {
         $this->createDirsIfNeeded();
 
@@ -97,7 +93,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
         return filemtime($assetPath);
     }
 
-    public function testGetItemsWhenOneAssetExists()
+    public function testGetItemsWhenOneAssetExists(): void
     {
         $this->createDirsIfNeeded();
 
@@ -110,7 +106,7 @@ class JsResourcesProviderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, count($resources));
     }
 
-    public function testGetItemsWhenBothAssetsExist()
+    public function testGetItemsWhenBothAssetsExist(): void
     {
         $this->createDirsIfNeeded();
 

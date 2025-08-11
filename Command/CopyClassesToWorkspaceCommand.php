@@ -10,7 +10,7 @@ use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Finder\Finder;
 
 /**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
+ * @copyright 2015 Modera Foundation
  */
 class CopyClassesToWorkspaceCommand extends AbstractCommand
 {

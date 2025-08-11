@@ -5,11 +5,7 @@ namespace Modera\BackendOnSteroidsBundle\Tests\Unit\AssetsDiscovery;
 use Modera\BackendOnSteroidsBundle\AssetsDiscovery\PathExpressionResolver;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * @author    Sergei Lissovski <sergei.lissovski@modera.org>
- * @copyright 2018 Modera Foundation
- */
-class PathExpressionResolverTest extends \PHPUnit_Framework_TestCase
+class PathExpressionResolverTest extends \PHPUnit\Framework\TestCase
 {
     private function createBundle($name, $path)
     {
@@ -20,7 +16,7 @@ class PathExpressionResolverTest extends \PHPUnit_Framework_TestCase
         return $bundle;
     }
 
-    public function testResolve()
+    public function testResolve(): void
     {
         $kernel = \Phake::mock('Symfony\Component\HttpKernel\KernelInterface');
         \Phake::when($kernel)->getBundles()->thenReturn([
@@ -50,7 +46,7 @@ class PathExpressionResolverTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testExcludedDirPresentInResolver()
+    public function testExcludedDirPresentInResolver(): void
     {
         $kernel = \Phake::mock('Symfony\Component\HttpKernel\KernelInterface');
         \Phake::when($kernel)->getBundles()->thenReturn([

@@ -12,7 +12,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
  * In case 'excluded_namespaces' parameter is present all bundles name fill be
  * filtered by it. "@Foo.*Bundle", excluded "@FoxXBundle", "FoxYBundle" will be returned
  *
- * @author    Sergei Lissovski <sergei.lissovski@modera.org>
  * @copyright 2015 Modera Foundation
  */
 class PathExpressionResolver

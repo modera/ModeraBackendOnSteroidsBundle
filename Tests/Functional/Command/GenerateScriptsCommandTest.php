@@ -7,15 +7,12 @@ use Modera\FoundationBundle\Testing\FunctionalTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 
-/**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
- */
 class GenerateScriptsCommandTest extends FunctionalTestCase
 {
     // see doSetUpBeforeClass()
     private static $scriptsDir;
 
-    public static function getScriptsPaths()
+    public static function getScriptsPaths(): array
     {
         $result = [];
 
@@ -26,7 +23,7 @@ class GenerateScriptsCommandTest extends FunctionalTestCase
         return $result;
     }
 
-    private static function deleteGeneratedScripts()
+    private static function deleteGeneratedScripts(): void
     {
         foreach (self::getScriptsPaths() as $filepath) {
             if (file_exists($filepath)) {
@@ -35,27 +32,21 @@ class GenerateScriptsCommandTest extends FunctionalTestCase
         }
     }
 
-    /**
-     * Template method.
-     */
-    public static function doSetUpBeforeClass()
+    public static function doSetUpBeforeClass(): void
     {
         self::$scriptsDir = __DIR__.'/../../../';
 
         static::deleteGeneratedScripts();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function doTearDownAfterClass()
+    public static function doTearDownAfterClass(): void
     {
         static::deleteGeneratedScripts();
     }
 
-    public function testExecute()
+    public function testExecute(): void
     {
-        $app = new Application(self::$container->get('kernel'));
+        $app = new Application(self::getContainer()->get('kernel'));
         $app->setAutoExit(false);
 
         $input = new ArrayInput(array(

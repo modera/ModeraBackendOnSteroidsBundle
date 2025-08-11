@@ -1,12 +1,10 @@
 framework:
-    secret:          Hell yeah!
-    session:         ~
-    templating:
-        engines: ['twig']
+    secret: Hell yeah!
+    session: ~
 
 # Twig Configuration
 twig:
-    debug:            '%kernel.debug%'
+    debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
 
 modera_backend_on_steroids:

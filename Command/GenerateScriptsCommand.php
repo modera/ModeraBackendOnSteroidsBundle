@@ -8,7 +8,7 @@ use Modera\BackendOnSteroidsBundle\DependencyInjection\ModeraBackendOnSteroidsEx
 use Modera\BackendOnSteroidsBundle\Generators\ShellScriptsGenerator;
 
 /**
- * @author Sergei Lissovski <sergei.lissovski@gmail.com>
+ * @copyright 2015 Modera Foundation
  */
 class GenerateScriptsCommand extends AbstractCommand
 {

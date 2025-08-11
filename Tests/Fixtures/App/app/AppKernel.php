@@ -5,37 +5,31 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
-        return array(
+        return [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
 
-            new Sli\ExpanderBundle\SliExpanderBundle(),
+            new Modera\ExpanderBundle\ModeraExpanderBundle(),
             new Modera\FoundationBundle\ModeraFoundationBundle(),
             new Modera\BackendOnSteroidsBundle\ModeraBackendOnSteroidsBundle(),
 
             new Modera\BackendOnSteroidsBundle\Tests\Fixtures\Bundles\BackendDummyBundle\ModeraBackendDummyBundle(),
-        );
+        ];
     }
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader): void
     {
         $loader->load(__DIR__.'/config/config.yml');
     }
 
-    /**
-     * @return string
-     */
-    public function getCacheDir()
+    public function getCacheDir(): string
     {
         return sys_get_temp_dir().'/ModeraBackendOnSteroidsBundle/cache';
     }
 
-    /**
-     * @return string
-     */
-    public function getLogDir()
+    public function getLogDir(): string
     {
         return sys_get_temp_dir().'/ModeraBackendOnSteroidsBundle/logs';
     }

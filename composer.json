@@ -5,29 +5,34 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Sergei Lissovski",
-            "email": "sergei.lissovski@modera.org",
-            "homepage": "http://sergei.lissovski.org/"
+            "name": "Sergei Lissovski"
+        },
+        {
+            "name": "Sergei Vizel"
         }
     ],
     "require": {
         "php": ">=7.4",
-        "modera/mjr-integration-bundle": "^4.0|^5.0",
-        "sergeil/expander-bundle": "^1.0"
+        "modera/expander-bundle": "^5.0|^6.0",
+        "modera/mjr-integration-bundle": "^5.0|^6.0"
     },
     "require-dev": {
-        "phake/phake": "^2.0",
-        "phpunit/phpunit": "^5.5",
-        "modera/foundation-bundle": "^4.0",
-        "symfony/symfony": "^4.4|^5.0"
+        "phake/phake": "^4.0",
+        "phpunit/phpunit": "^6.5",
+        "modera/foundation-bundle": "^5.0",
+        "symfony/symfony": "^5.4|^6.0"
     },
     "autoload": {
-        "psr-0": { "Modera\\BackendOnSteroidsBundle": "" }
+        "psr-4": { "Modera\\BackendOnSteroidsBundle\\": "" }
     },
-    "target-dir": "Modera/BackendOnSteroidsBundle",
+    "autoload-dev": {
+        "classmap": [
+            "Tests/Fixtures/App/app/AppKernel.php"
+        ]
+    },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "3.x-dev"
         }
     }
 }
