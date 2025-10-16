@@ -31,7 +31,7 @@ class ModeraBackendOnSteroidsExtension extends Extension
         $container->setParameter(self::CONFIG_KEY, $config);
 
         if ($config['inject_scripts']) {
-            $jsResourcesProvider = new Definition(JsResourcesProvider::clazz());
+            $jsResourcesProvider = new Definition(JsResourcesProvider::class);
             $jsResourcesProvider->addArgument(new Reference('service_container'));
             $jsResourcesProvider->addTag('modera_mjr_integration.js_resources_provider');
 
@@ -41,7 +41,7 @@ class ModeraBackendOnSteroidsExtension extends Extension
             );
         }
 
-        $semanticPathsProvider = new Definition(SemanticConfigCompilerPathsProvider::clazz());
+        $semanticPathsProvider = new Definition(SemanticConfigCompilerPathsProvider::class);
         $semanticPathsProvider->addArgument($config);
         $semanticPathsProvider->addTag('modera_backend_on_steroids.extjs_classes_paths_provider');
 

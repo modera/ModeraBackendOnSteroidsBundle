@@ -54,7 +54,7 @@ class ModeraBackendOnSteroidsExtensionTest extends \PHPUnit\Framework\TestCase
         $def = $stats['definitions'][$index];
 
         $this->assertInstanceOf('Symfony\Component\DependencyInjection\Definition', $def);
-        $this->assertEquals(JsResourcesProvider::clazz(), $def->getClass());
+        $this->assertEquals(JsResourcesProvider::class, $def->getClass());
         $this->assertEquals(['modera_mjr_integration.js_resources_provider'], array_keys($def->getTags()));
         $args = $def->getArguments();
         $this->assertEquals(1, count($args));
